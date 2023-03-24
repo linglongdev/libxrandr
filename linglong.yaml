@@ -1,0 +1,43 @@
+package:
+  id: libxrandr
+  name: libxrandr
+  version: 1.5.1
+  kind: lib
+  discription: |
+    libxrandr
+
+base:
+  id: org.deepin.base
+  version: 20.5.0
+
+#pkg-kde-tools gettext graphviz 
+depends:
+- id: qtbase
+  version: 5.11.3.15
+- id: qttools
+  version: 5.11.3
+- id: qtdeclarative
+  version: 5.11.3
+- id: qtscript
+  version: 5.11.3
+
+source:
+  kind: git
+  url: https://github.com/deepin-community/libxrandr.git
+  version: master
+  commit: 4dee8cebe563ac6546b6a07f64264bddd8c80799
+
+  patch:
+  - '# placeholder'
+build:
+  kind: manual
+  manual:
+    configure: |
+      #exec bash
+      mkdir build
+      cd build
+      cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+            -DCMAKE_INSTALL_LIBDIR=${PREFIX}/lib \
+            -DKDE_INSTALL_USE_QT_SYS_PATHS=ON ..
+      make -j
+      make -j install
