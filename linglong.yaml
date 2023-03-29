@@ -27,8 +27,6 @@ source:
   version: master
   commit: 4dee8cebe563ac6546b6a07f64264bddd8c80799
 
-  patch:
-  - '# placeholder'
 build:
   kind: manual
   manual:
